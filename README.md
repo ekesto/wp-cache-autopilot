@@ -1,2 +1,6 @@
 # WP Cache Autopilot
-Changelogs of the two WP Cache Autopilot plugins "Cache Innvalidator" and "Cache Warmup".
+
+Changelogs for the WP Cache Autopilot plugins **Cache Invalidator** and **Cache Warmup**.
+
+Website: [wpcacheautopilot.com](https://wpcacheautopilot.com)  
+Docs: [wpcacheautopilot.com/docs](https://wpcacheautopilot.com/docs)
