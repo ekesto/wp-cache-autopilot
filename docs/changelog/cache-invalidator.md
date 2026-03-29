@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.14 = 2026-03-29
+* Fix: Release publishing now uses GitHub CLI (`gh release create/upload`) instead of the Node 20-based `softprops/action-gh-release` action.
+* Fix: Removed remaining Node 20 deprecation warnings from the release pipeline while preserving deterministic `-dist.zip` upload behavior.
+
 = 7.3.13 = 2026-03-29
 * Enhancement: Release workflow now syncs changelog docs to the public repo as a dependent job after successful tag builds.
 * Fix: Updated sync workflows to `actions/checkout@v5` to align with GitHub Actions Node.js 24 migration requirements.
