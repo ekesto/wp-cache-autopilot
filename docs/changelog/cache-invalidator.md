@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.16 = 2026-03-29
+* Fix: Freemius deployment workflow now uses step-level secret gating, resolving GitHub workflow validation errors from unsupported job-level `secrets` expressions.
+* Enhancement: Freemius deployment gracefully skips with an explicit log message when required Freemius secrets are not configured.
+
 = 7.3.15 = 2026-03-29
 * Enhancement: Decoupled Freemius deployment publishing into a dedicated `freemius-release.yml` workflow so base tag-release packaging remains reusable across repositories.
 * Fix: Freemius deployment workflow now consumes the GitHub release `*-dist.zip` asset and publishes the same artifact to Freemius.
