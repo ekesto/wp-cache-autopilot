@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.11 = 2026-03-29
+* Fix: Release CI now parses plugin header `Version:` values correctly from root PHP files, preventing false tag/version mismatch failures.
+* Fix: Tag verification now compares against the extracted semantic version (for example `7.3.11`) instead of the literal `Version:` token.
+
 = 7.3.10 = 2026-03-29
 * Fix: Release CI now installs WP-CLI from the stable gh-pages PHAR URL, avoiding curl HTTP failures (`exit 22`) on tag builds.
 * Fix: Pinned `wp-cli/dist-archive-command` to `v3.1.0`, which is compatible with runner WP-CLI `2.12.x`.
