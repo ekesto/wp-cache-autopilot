@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.7 = 2026-03-29
+* Fix: Added explicit GitHub Actions `contents: write` permission so release creation succeeds on tag-triggered runs.
+* Fix: Keeps automated distribution publishing on Releases functional for the `-dist.zip` artifact.
+
 = 7.3.6 = 2026-03-29
 * Fix: Restored `dist/` exclusion in `.distignore` to keep local/CI packaging artifacts out of release ZIPs.
 * Fix: Release ZIP hygiene validation now allows required runtime `build/` assets while still blocking development-only paths.
