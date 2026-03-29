@@ -1,6 +1,12 @@
 <!-- AUTO-GENERATED FROM README. DO NOT EDIT -->
+# Cache Invalidator Changelog
 
 == Changelog ==
+
+= 7.3.5 = 2026-03-29
+* Fix: Release CI now installs the WP-CLI `dist-archive` package before building distribution archives.
+* Enhancement: Release packaging now fails fast when `.distignore` is missing and publishes a single deterministic `-dist.zip` asset.
+* Fix: Added release ZIP hygiene validation to fail builds if development files are detected in the distribution artifact.
 
 = 7.3.4 = 2026-03-28
 * Enhancement: Refined admin settings SCSS to use shared semantic color tokens for more consistent panel, modal, table, and plugin-meta styling.
