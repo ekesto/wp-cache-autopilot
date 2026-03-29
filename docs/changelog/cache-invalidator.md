@@ -3,6 +3,13 @@
 
 == Changelog ==
 
+= 7.3.20 = 2026-03-29
+* Enhancement: Moved Freemius SDK updates to a Composer-managed `vendor/freemius/wordpress-sdk` workflow.
+* Enhancement: Switched runtime class loading to Composer PSR-4 only (`vendor/autoload.php`) and removed legacy `src/autoload.php`.
+* Fix: Added gated Freemius bootstrap wrappers with Git Updater-aware auto-disable and explicit update-system separation.
+* Fix: Release packaging now installs Composer dependencies before building the `-dist.zip` artifact.
+* Fix: Release verification now enforces lifecycle uninstall wiring and fails if legacy root `uninstall.php` is present.
+
 = 7.3.19 = 2026-03-29
 * Fix: Improved Freemius deployment workflow.
 * Fix: Moved uninstall cleanup to a lifecycle uninstall hook for Freemius compatibility.
