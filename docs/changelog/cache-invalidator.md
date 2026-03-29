@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.15 = 2026-03-29
+* Enhancement: Decoupled Freemius deployment publishing into a dedicated `freemius-release.yml` workflow so base tag-release packaging remains reusable across repositories.
+* Fix: Freemius deployment workflow now consumes the GitHub release `*-dist.zip` asset and publishes the same artifact to Freemius.
+
 = 7.3.14 = 2026-03-29
 * Fix: Release publishing now uses GitHub CLI (`gh release create/upload`) instead of the Node 20-based `softprops/action-gh-release` action.
 * Fix: Removed remaining Node 20 deprecation warnings from the release pipeline while preserving deterministic `-dist.zip` upload behavior.
