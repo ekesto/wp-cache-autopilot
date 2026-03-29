@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.8 = 2026-03-29
+* Fix: Release CI now force-updates WP-CLI before installing `wp-cli/dist-archive-command`, resolving the `wp-cli/wp-cli ^2.13` dependency error.
+* Enhancement: Updated checkout action to `actions/checkout@v5` to align with GitHub Actions Node.js 24 migration warnings.
+
 = 7.3.7 = 2026-03-29
 * Fix: Added explicit GitHub Actions `contents: write` permission so release creation succeeds on tag-triggered runs.
 * Fix: Keeps automated distribution publishing on Releases functional for the `-dist.zip` artifact.
