@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.9 = 2026-03-29
+* Fix: Release CI now installs a deterministic WP-CLI `2.13.0` PHAR before `wp-cli/dist-archive-command` installation, preventing the WP-CLI dependency mismatch (`^2.13`).
+* Fix: Added an explicit WP-CLI version guard in release CI so incompatible runner versions fail early with a clear error.
+
 = 7.3.8 = 2026-03-29
 * Fix: Release CI now force-updates WP-CLI before installing `wp-cli/dist-archive-command`, resolving the `wp-cli/wp-cli ^2.13` dependency error.
 * Enhancement: Updated checkout action to `actions/checkout@v5` to align with GitHub Actions Node.js 24 migration warnings.
