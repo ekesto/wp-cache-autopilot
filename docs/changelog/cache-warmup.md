@@ -3,7 +3,16 @@
 
 == Changelog ==
 
+= 3.5.5 = 2026-03-29
+* Enhancement: Moved Freemius SDK updates to a Composer-managed vendor/freemius/wordpress-sdk workflow.
+* Enhancement: Switched runtime class loading to Composer PSR-4 only (vendor/autoload.php) and removed legacy src/autoload.php.
+* Enhancement: Updated the admin bar quick link from `Open settings` to `Show log`, targeting the Logging tab anchor directly.
+* Fix: Added gated Freemius bootstrap wrappers with Git Updater-aware auto-disable and explicit update-system separation.
+* Fix: Release packaging now installs Composer dependencies before building the dist artifact.
+* Fix: Release verification now enforces lifecycle uninstall wiring and fails if legacy root uninstall.php is present.
+
 = 3.5.4 = 2026-03-28
+* Fix: Moved uninstall cleanup to a lifecycle uninstall hook for Freemius-compatible packaging.
 * New: Added a manual HTTP self-check endpoint for diagnostics connectivity checks.
 * Enhancement: Moved connectivity diagnostics into Warmup Transport and added server-time context to log refresh actions.
 * Fix: Reduced WP-Cron diagnostics to configuration and queue activity details.
