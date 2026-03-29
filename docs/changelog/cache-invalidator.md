@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.12 = 2026-03-29
+* Fix: Corrected release CI version extraction escaping so plugin header parsing no longer returns an empty value in GitHub Actions.
+* Fix: Restored reliable tag/version validation by parsing `* Version: x.y.z` header lines correctly during release builds.
+
 = 7.3.11 = 2026-03-29
 * Fix: Release CI now parses plugin header `Version:` values correctly from root PHP files, preventing false tag/version mismatch failures.
 * Fix: Tag verification now compares against the extracted semantic version (for example `7.3.11`) instead of the literal `Version:` token.
