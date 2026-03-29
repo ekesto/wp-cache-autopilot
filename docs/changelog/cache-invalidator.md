@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.10 = 2026-03-29
+* Fix: Release CI now installs WP-CLI from the stable gh-pages PHAR URL, avoiding curl HTTP failures (`exit 22`) on tag builds.
+* Fix: Pinned `wp-cli/dist-archive-command` to `v3.1.0`, which is compatible with runner WP-CLI `2.12.x`.
+
 = 7.3.9 = 2026-03-29
 * Fix: Release CI now installs a deterministic WP-CLI `2.13.0` PHAR before `wp-cli/dist-archive-command` installation, preventing the WP-CLI dependency mismatch (`^2.13`).
 * Fix: Added an explicit WP-CLI version guard in release CI so incompatible runner versions fail early with a clear error.
