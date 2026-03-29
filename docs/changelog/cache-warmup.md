@@ -3,6 +3,9 @@
 
 == Changelog ==
 
+= 3.5.6 = 2026-03-29
+* Fix: Updated Freemius SDK initialization to use direct associative-array parameters for deployment validation compatibility.
+
 = 3.5.5 = 2026-03-29
 * Enhancement: Moved Freemius SDK updates to a Composer-managed vendor/freemius/wordpress-sdk workflow.
 * Enhancement: Switched runtime class loading to Composer PSR-4 only (vendor/autoload.php) and removed legacy src/autoload.php.
