@@ -3,6 +3,11 @@
 
 == Changelog ==
 
+= 7.3.13 = 2026-03-29
+* Enhancement: Release workflow now syncs changelog docs to the public repo as a dependent job after successful tag builds.
+* Fix: Updated sync workflows to `actions/checkout@v5` to align with GitHub Actions Node.js 24 migration requirements.
+* Fix: Added `.gitmodules` to `.distignore` so VCS submodule metadata is excluded from distribution archives.
+
 = 7.3.12 = 2026-03-29
 * Fix: Corrected release CI version extraction escaping so plugin header parsing no longer returns an empty value in GitHub Actions.
 * Fix: Restored reliable tag/version validation by parsing `* Version: x.y.z` header lines correctly during release builds.
