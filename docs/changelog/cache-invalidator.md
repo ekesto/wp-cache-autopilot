@@ -3,6 +3,9 @@
 
 == Changelog ==
 
+= 7.3.17 = 2026-03-29
+* Fix: Freemius deployment now triggers directly on tag pushes and waits for the matching GitHub release `-dist.zip` asset before upload, improving release handoff reliability.
+
 = 7.3.16 = 2026-03-29
 * Fix: Freemius deployment workflow now uses step-level secret gating, resolving GitHub workflow validation errors from unsupported job-level `secrets` expressions.
 * Enhancement: Freemius deployment gracefully skips with an explicit log message when required Freemius secrets are not configured.
