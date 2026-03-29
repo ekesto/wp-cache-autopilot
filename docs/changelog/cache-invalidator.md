@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.19 = 2026-03-29
+* Fix: Improved Freemius deployment workflow.
+* Fix: Moved uninstall cleanup to a lifecycle uninstall hook for Freemius compatibility.
+
 = 7.3.18 = 2026-03-29
 * Fix: Improved Freemius deployment workflow.
 
