@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.6 = 2026-03-29
+* Fix: Restored `dist/` exclusion in `.distignore` to keep local/CI packaging artifacts out of release ZIPs.
+* Fix: Release ZIP hygiene validation now allows required runtime `build/` assets while still blocking development-only paths.
+
 = 7.3.5 = 2026-03-29
 * Fix: Release CI now installs the WP-CLI `dist-archive` package before building distribution archives.
 * Enhancement: Release packaging now fails fast when `.distignore` is missing and publishes a single deterministic `-dist.zip` asset.
