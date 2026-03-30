@@ -3,6 +3,10 @@
 
 == Changelog ==
 
+= 7.3.23 = 2026-03-30
+* Fix: Global template/style invalidation now resolves full-site targets using publicly viewable post types so built-in pages are emitted.
+* Enhancement: Removed dead duplicate public-content helper methods from legacy listeners to prevent query-semantics drift.
+
 = 7.3.22 = 2026-03-30
 * Enhancement: Added `GlobalInvalidationExecutor` as the canonical terminal execution path for global invalidation.
 * Fix: Rerouted non-content trigger global paths away from group resolution and enforced safe global escalation for fallback scenarios.
