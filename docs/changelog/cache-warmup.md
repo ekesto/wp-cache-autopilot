@@ -3,6 +3,14 @@
 
 == Changelog ==
 
+= 3.5.7 = 2026-03-30
+* Enhancement: Added on-demand full URL detail loading in Recent Logs via a dedicated per-run details endpoint.
+* Enhancement: Added concise running-state detail hint when warmed URLs exist but only queued rows are visible.
+* Fix: Clarified URL detail preview copy with explicit shown/total entry counts.
+* Fix: Switched load-all error rendering to the native WordPress `Notice` component.
+* Fix: Updated Freemius bootstrap flags for premium-only/anonymous mode and disabled plugin submenu rendering.
+* Enhancement: Updated dist packaging excludes to omit Composer manifests and testing directories from release archives.
+
 = 3.5.6 = 2026-03-29
 * Fix: Updated Freemius SDK initialization to use direct associative-array parameters for deployment validation compatibility.
 
