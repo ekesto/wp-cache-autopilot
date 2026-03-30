@@ -3,6 +3,15 @@
 
 == Changelog ==
 
+= 7.3.22 = 2026-03-30
+* Enhancement: Added `GlobalInvalidationExecutor` as the canonical terminal execution path for global invalidation.
+* Fix: Rerouted non-content trigger global paths away from group resolution and enforced safe global escalation for fallback scenarios.
+* Fix: Added request-terminal short-circuiting to stop duplicate purge/emission/resolver work after `GLOBAL_INVALIDATION`.
+* Enhancement: Added emission metadata fields (`intent`, `resolution`, `fallback`, `fallback_reason`) while preserving compatibility trigger fields.
+* Fix: Added forms metadata normalization so precise/fallback/terminal-skip outcomes emit consistent `intent`/`resolution`/`fallback` fields.
+* Fix: Added excluded post-type direct-path metadata with normalized `resolution=CONTENT_DIRECT` for content-trigger consistency.
+* Enhancement: Reduced noisy `updated_option` terminal-skip logs to invalidation-relevant option keys.
+
 = 7.3.21 = 2026-03-29
 * Fix: Updated Freemius SDK initialization to use direct associative-array parameters for deployment validation compatibility.
 
