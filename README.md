@@ -1,66 +1,68 @@
 # WP Cache Autopilot
 
-WP Cache Autopilot is a cache lifecycle automation system for WordPress. It keeps cache fresh automatically by precisely invalidating affected pages and rebuilding them safely after content changes.
+WP Cache Autopilot is a cache lifecycle automation system for WordPress. It improves cache freshness by automatically determining which pages are affected by content changes, purging only those entries through supported cache plugins, and rebuilding them through controlled warmup execution.
 
 This repository contains the public changelogs for the included plugins:
 
-• **Cache Invalidator** – decides what cache must refresh  
-• **Cache Warmup** – rebuilds cache after changes
+• **Cache Invalidator** – see [changelog](https://ekesto.github.io/wp-cache-autopilot/docs/changelog/cache-invalidator)
+• **Cache Warmup** – [changelog](https://ekesto.github.io/wp-cache-autopilot/docs/changelog/cache-warmup)
 
-WP Cache Autopilot works alongside existing cache plugins and focuses on cache freshness, not cache storage.
+Documentation lives on the product website. This repository exists only for release transparency and changelog history.
 
-## The problem
+## Scope
 
-WordPress cache improves performance but creates a freshness risk. Content updates may not appear immediately, while full cache flushes cause cold pages and traffic spikes.
+WP Cache Autopilot does not replace cache plugins. Cache plugins handle storage and delivery. WP Cache Autopilot handles cache freshness automation.
 
-## The solution
+Lifecycle handled:
 
-WP Cache Autopilot automates the cache lifecycle:
-
-1. Detect content changes  
-2. Identify affected pages  
-3. Purge cache precisely  
-4. Warm affected URLs automatically  
-
-Result:
-
-- Less stale content
-- Fewer full cache flushes
-- Reduced regeneration spikes
-- Less manual cache management
+1 Detect content changes  
+2 Resolve affected URLs  
+3 Purge via cache adapter  
+4 Queue warmup requests  
+5 Rebuild cache via paced execution  
 
 ## Included plugins
 
 ### Cache Invalidator
-Handles cache invalidation (automatic cache clearing):
+
+Determines which URLs must be refreshed after content changes.
+
+Core capabilities:
 
 - Group-based invalidation rules
 - Relationship propagation
 - Archive inclusion
 - Multilingual awareness
 - Timed invalidation rules
+- Global invalidation controls
 - Developer hooks and filters
 
 ### Cache Warmup
-Handles cache warmup (cache preload):
+
+Rebuilds cache entries after invalidation.
+
+Core capabilities:
 
 - Targeted warmup after invalidation
 - Full sitemap warmup
-- Queue processing via WP-Cron
+- Queue execution via WP-Cron
 - Priority handling for important URLs
+- Diagnostics and transport fallback logic
 
 ## Integrations
 
-WP Cache Autopilot integrates with supported WordPress cache plugins via cache adapters. It does not replace cache plugins — it keeps them accurate.
+WP Cache Autopilot integrates with supported WordPress cache plugins through cache adapters. Behavior depends on adapter capabilities and hosting environment.
 
 ## Changelogs
 
-This repository publishes release changelogs for:
+This repository publishes changelogs for:
 
 - Cache Invalidator
 - Cache Warmup
 
-For installation, configuration, and usage documentation, see the official documentation.
+For installation and configuration documentation:
+
+https://wpcacheautopilot.com/docs
 
 ## Links
 
@@ -76,6 +78,6 @@ Getting Started:
 Support:  
 [https://wpcacheautopilot.com/support/](https://wpcacheautopilot.com/support/)
 
-## About
+## Maintainer
 
-WP Cache Autopilot is developed and maintained by Beat Schenkel (ekesto), an independent Swiss WordPress developer focused on solving real cache freshness problems for production WordPress sites.
+Developed and maintained by Beat Schenkel (ekesto), an independent Swiss WordPress developer.
