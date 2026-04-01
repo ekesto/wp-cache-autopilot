@@ -3,6 +3,9 @@
 
 == Changelog ==
 
+## 7.3.26 – 2026-04-01
+* Fix: Manual changelog sync now strips everything before the changelog heading with `sed`, avoiding heading-detection edge cases during export.
+
 ## 7.3.25 – 2026-04-01
 * Enhancement: Manual changelog sync now publishes to `docs/changelog/<plugin>/index.md` in the public docs repo for cleaner page paths.
 * Fix: Manual changelog sync now preserves markdown changelog headings from `readme.txt` instead of rewriting them during export.
