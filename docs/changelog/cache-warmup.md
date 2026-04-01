@@ -3,6 +3,28 @@
 
 == Changelog ==
 
+= 3.5.11 = 2026-04-01
+* Fix: Full warmup requests now persist intent-only `preparing` runs and move sitemap planning into the runner.
+* Fix: Targeted invalidations now buffer losslessly during full-run preparation and merge before sitemap tail capping.
+* Fix: Logs, run-now, and reset handling now treat `preparing` as active work and transition the same run row to `running`.
+
+= 3.5.10 = 2026-04-01
+* Fix: Async full warmup preparation now keeps targeted URLs queued during `preparing` in a run-scoped buffer until the running queue is committed.
+* Fix: Invalidation intake now uses cached-only sitemap membership and skips quickly when cached membership is unavailable.
+* Fix: Targeted enqueue admission now rejects preview, admin, REST-style, and Elementor library query URLs before queueing.
+* Fix: Recent Logs now shows em dashes for preparing totals instead of misleading zero values.
+
+= 3.5.9 = 2026-03-31
+* Enhancement: Logging tab manual batch action now runs the next queued warmup batch directly in the current request.
+* Fix: Run-now REST responses now return explicit manual batch outcome states and queue metadata, including cache-disabled skips.
+* Fix: `save_post` now asks ECI frontend eligibility before queueing targeted warm URLs and fails open when ECI is unavailable.
+* Fix: `Triggers` now trusts ECI structural detection for `elementor_library` and fails open on ambiguity instead of suppressing by post type alone.
+* Fix: Warmup now skips or stops runs when the selected cache adapter reports baseline page caching as disabled.
+* Enhancement: `GLOBAL_INVALIDATION` intake now reuses the existing full warmup path instead of enqueueing per-URL targeted work.
+
+= 3.5.8 = 2026-03-30
+* Fix: Clarified Priorities tab copy to state post type ordering applies to full warmup runs.
+
 = 3.5.7 = 2026-03-30
 * Enhancement: Added on-demand full URL detail loading in Recent Logs via a dedicated per-run details endpoint.
 * Enhancement: Added concise running-state detail hint when warmed URLs exist but only queued rows are visible.
