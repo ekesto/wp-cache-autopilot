@@ -4,8 +4,8 @@ WP Cache Autopilot is a cache lifecycle automation system for WordPress. It impr
 
 This repository contains the public changelogs for the included plugins:
 
-• **Cache Invalidator** – see [changelog](https://ekesto.github.io/wp-cache-autopilot/docs/changelog/cache-invalidator)
-• **Cache Warmup** – [changelog](https://ekesto.github.io/wp-cache-autopilot/docs/changelog/cache-warmup)
+- **Cache Invalidator** – see [changelog](https://ekesto.github.io/wp-cache-autopilot/docs/changelog/cache-invalidator/)
+- **Cache Warmup** – [changelog](https://ekesto.github.io/wp-cache-autopilot/docs/changelog/cache-warmup/)
 
 Documentation lives on the product website. This repository exists only for release transparency and changelog history.
 
