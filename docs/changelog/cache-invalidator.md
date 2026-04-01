@@ -3,9 +3,28 @@
 
 == Changelog ==
 
+= 7.3.24 = 2026-03-31
+* Fix: Forms resolver now discovers builder-backed form containers through the shared builder bridge before confirmation.
+* Fix: Forms matching now normalizes escaped builder-stored shortcode text before adapter extraction.
+* Fix: Contact Form 7 alias expansion now accepts modern 64-character `_hash` values and 7-character prefixes.
+* Enhancement: Structural visibility and resolver dispatch now use request-local memoization to avoid repeated registry and post-type rebuilds in hot paths.
+* Enhancement: Navigation, template part, and synced pattern invalidation now share a resolver-first precise targeting path with consistent fallback handling.
+* Fix: Post `update_published` invalidation now skips duplicate same-request save cycles before resolution work begins.
+* New: Added internal structural-container providers and shared traversal for core structural entities plus Elementor templates/components.
+* Fix: Elementor library/component traversal now classifies runtime document families conservatively so presentation and unknown templates escalate to uncertainty instead of traversal.
+* Fix: Structural invalidation now suppresses partial precise emission whenever unresolved structural uncertainty remains.
+* Enhancement: Structural post-type classification now comes from the provider registry so builder scan hints stay candidate-only and structural entities remain non-emittable.
+* Fix: Purged structural post IDs no longer emit their own permalinks into downstream warmup URLs.
+
 = 7.3.23 = 2026-03-30
 * Fix: Global template/style invalidation now resolves full-site targets using publicly viewable post types so built-in pages are emitted.
 * Enhancement: Removed dead duplicate public-content helper methods from legacy listeners to prevent query-semantics drift.
+* Enhancement: Added internal multilingual sibling-ID expansion for numeric `ref` discovery.
+* Fix: Synced pattern and navigation resolvers now match translated object siblings before purge fanout runs.
+* Enhancement: Builder usage adapters now declare normalized deterministic scan hints instead of ad-hoc resolver inputs.
+* Fix: Builder container discovery now stays inside resolver scan scope and marks adapter lookup failures as scan-gap uncertainty only.
+* Fix: Builder container matching now expands translated siblings before confirmation; builder template containers remain structural-only.
+* Cleanup: Removed legacy backward-compatible `Multilingual\WpmlLanguageResolver` shim class; all internal paths already use `Multilingual\Resolvers\WpmlLanguageResolver`.
 
 = 7.3.22 = 2026-03-30
 * Enhancement: Added `GlobalInvalidationExecutor` as the canonical terminal execution path for global invalidation.
