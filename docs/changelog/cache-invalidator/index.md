@@ -8,6 +8,11 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 7.3.30 – 2026-04-02
+* Enhancement: Added `resolver_confirmed_target` to resolver-first invalidation emission context for clearer downstream diagnostics.
+* Enhancement: Updated `.wp-standards` submodule reference to latest standards snapshot.
+* Fix: Synced version references across plugin header, runtime constant, and package manifests.
+
 ### 7.3.29 – 2026-04-02
 * Enhancement: Added a shared Upgrade Safety Doctrine to internal handover guidance across WP Cache Autopilot plugins.
 * Enhancement: Updated settings UI/docs content alignment and rebuilt admin settings assets for the latest release snapshot.
