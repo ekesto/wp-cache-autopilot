@@ -8,6 +8,12 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 3.7.1 – 2026-04-02
+* Fix: Added strict queue run-ownership guards so stale workers cannot overwrite or clear newer restarted runs.
+* Fix: Allowed resolver-confirmed invalidation targets to enqueue when cached sitemap membership is temporarily unavailable.
+* Fix: Extended `onSavePost()` structural fallback exclusions to skip direct targeted enqueueing for `wp_pattern` and `wp_global_styles`.
+* Fix: Adapter post-purge single-URL intake now applies post-aware structural admission so structural editor entities are rejected before targeted queue insertion.
+
 ### 3.7.0 – 2026-04-02
 * Fix: Added the missing `Debug` class import in manual run-now handling so diagnostics logging resolves the correct namespace during immediate batch execution.
 
