@@ -8,6 +8,11 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 3.6.0 – 2026-04-02
+* Enhancement: Added upgrade-sensitive trigger suppression so shutdown-time adapter events defer warmup enqueueing to maintenance cron during in-request plugin updates.
+* Fix: Restored backward compatibility for mixed-version update windows with a deprecated `Queue::enqueueFull()` forwarding shim to intent-based enqueueing.
+* Fix: Updated all settings tab docs links to the public docs host (`wpcacheautopilot.com`).
+
 ### 3.5.14 – 2026-04-01
 * Fix: Restored changelog mirroring to the standalone `sync-changelog.yml` workflow after release builds complete.
 * Fix: Aligned readme changelog headings with the generated public changelog markdown structure.
