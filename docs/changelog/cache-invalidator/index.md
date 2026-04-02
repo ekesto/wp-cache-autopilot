@@ -8,6 +8,11 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 7.3.29 – 2026-04-02
+* Enhancement: Added a shared Upgrade Safety Doctrine to internal handover guidance across WP Cache Autopilot plugins.
+* Enhancement: Updated settings UI/docs content alignment and rebuilt admin settings assets for the latest release snapshot.
+* Fix: Synced version references across plugin header, runtime constant, and package manifests.
+
 ### 7.3.28 – 2026-04-01
 * Enhancement: Final test release restores changelog sync as a dedicated workflow triggered after successful `Build Release` runs or by manual dispatch.
 * Enhancement: Release workflow now supports manual `workflow_dispatch` runs with an explicit tag input for rebuild/debug scenarios.
