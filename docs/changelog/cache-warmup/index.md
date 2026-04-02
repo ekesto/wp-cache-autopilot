@@ -8,6 +8,9 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 3.7.0 – 2026-04-02
+* Fix: Added the missing `Debug` class import in manual run-now handling so diagnostics logging resolves the correct namespace during immediate batch execution.
+
 ### 3.6.0 – 2026-04-02
 * Enhancement: Added upgrade-sensitive trigger suppression so shutdown-time adapter events defer warmup enqueueing to maintenance cron during in-request plugin updates.
 * Fix: Restored backward compatibility for mixed-version update windows with a deprecated `Queue::enqueueFull()` forwarding shim to intent-based enqueueing.
