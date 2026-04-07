@@ -8,6 +8,46 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 9.1.0 – 2026-04-07
+* New: Elementor Component (`elementor_component`) edits via the Atomic editor now trigger structural invalidation through the `elementor/document/after_save` Document lifecycle hook.
+* New: Elementor condition-based targeted resolution for presentation templates (`_elementor_conditions`) with deterministic GLOBAL_TARGETED execution.
+* Enhancement: Elementor structural classifier now prioritizes STRUCTURAL_CONTAINER over PRESENTATION_TEMPLATE in runtime evaluation order.
+* Enhancement: Elementor structural fallback types expanded with `loop-item` and `component` template types.
+* Enhancement: Template reference parser now detects Loop Grid widgets (`loop-grid`) and Global widgets (`global`/`templateID`) alongside legacy `template` widgets.
+* Enhancement: Component reference SQL prefilters now support both Atomic schema (`$$type` wrapper) and legacy schema (value only).
+* Enhancement: Library structural provider SQL prefilters now include Global widget `templateID` needles alongside legacy `template_id`.
+* Enhancement: Global executor now includes a defensive catch-all that auto-fixes and logs GLOBAL_TARGETED non-fallback emissions missing the `confirmed_resolution_target` trust flag.
+* Enhancement: Structural entity resolved references now explicitly set `confirmed_resolution_target` trust flag.
+* Fix: Elementor library update handler now deduplicates within a request to prevent double processing from multiple save hooks.
+
+### 9.0.1 – 2026-04-06
+* Enhancement: Reorganized runtime integration domains under `src/Integrations/*` (Builders, Caching, Forms, Multilingual, RelationshipProviders, Structural) with aligned `Ekesto\\CacheInvalidator\\Integrations\\*` namespaces.
+* Fix: Updated core and resolver consumers to the new Structural integration namespace (`Integrations\\Structural\\*`) without changing invalidation behavior.
+* Enhancement: Added `ArchiveDefaultsProvider` as the central optional archive-taxonomy defaults provider used by archive resolution paths.
+* Fix: Synced version references across plugin header, runtime constant, and package manifests.
+
+### 9.0.0 – 2026-04-05
+* New: Added `SelectorResolver` as the shared selector contract layer for `ekesto_ci_post_selectors`, `ekesto_ci_archive_selectors`, and `ekesto_ci_widget_selectors`.
+* Enhancement: Selector outcomes now aggregate across post/archive/widget surfaces before execution, with strict GLOBAL precedence and single global execution.
+* Enhancement: Emission context now treats deterministic post-ID-only targets as confirmed resolution targets via `confirmed_resolution_target` and mirrored `resolver_confirmed_target`.
+* Enhancement: Normalized trust-flag migration bridge annotations (`resolver_confirmed_target` -> `confirmed_resolution_target`) with explicit ECI/ECW version gates.
+* Enhancement: Global executor outcome logs now include `final_outcome` and render `resolution=GLOBAL_INVALIDATION (fallback: <reason>)` when a meaningful fallback reason exists.
+* Enhancement: Renamed graph internals to relationship terminology (`RelationshipGraphResolver`, `resolveRelationshipEdges`, `MAX_RELATIONSHIP_GRAPH_DEPTH`) while preserving runtime behavior.
+* Enhancement: Switched post-type relationship settings contract key from `dependencies` to `relationships` across resolver, settings, and settings UI state payloads.
+* Fix: Selector-targeted outcomes that resolve empty now escalate to `GLOBAL_FALLBACK` only when valid selectors were provided (`has_selectors=true`).
+* Fix: Selector-targeted and deterministic meta-change emissions now mark confirmed resolver targets (including URL-only deterministic meta targets) while excluding fallback/global outcomes, so downstream warmup intake does not drop deterministic URLs when sitemap membership cache is cold.
+* Fix: Replaced trust-bridge migration placeholders with concrete remove-after majors (`ECI >= 10.0`, `ECW >= 4.0`) without changing runtime behavior.
+* Fix: Removed legacy wildcard/map selector semantics from developer docs and aligned extension guidance to strict selector-only behavior.
+* Fix: Widget selector `GLOBAL` intent no longer gets skipped by `mapped_ids=0 fallback=off` guards in widget option and sidebar update paths.
+* Fix: Removed temporary `DependencyGraphResolver` alias bridge after full resolver/callsite migration to `RelationshipGraphResolver`.
+
+### 8.0.0 – 2026-04-03
+* New: Replaced legacy Group/Scope invalidation with a Post Type relationship graph model and PT-centric settings storage (`post_types`).
+* New: Added `DependencyGraphResolver` and removed legacy `GroupResolver` / `Groups` runtime classes.
+* Enhancement: Refactored async deep invalidation to re-resolve propagation edges per job and dedupe discovered entities by `post_type:post_id`.
+* Enhancement: Rebuilt settings UI around Post Type tabs with `Content Dependencies` and `Additional Invalidation Rules` panels.
+* Fix: Added unsaved-changes leave guard in settings UI to prevent accidental navigation loss before `Save All`.
+
 ### 7.3.30 – 2026-04-02
 * Enhancement: Added `resolver_confirmed_target` to resolver-first invalidation emission context for clearer downstream diagnostics.
 * Enhancement: Updated `.wp-standards` submodule reference to latest standards snapshot.
@@ -188,7 +228,7 @@ title: Cache Invalidator Changelog
 * Enhancement: Added fuzzy search for page target selection in the settings modal (title and URL slug matching).
 * Enhancement: Added inline highlight rendering for matched title and URL slug fragments in selector rows.
 * Fix: Kept select-all, row toggle, and filtered-selection behavior unchanged while search metadata is propagated through the table.
-* Enhancement: Clarified `ekesto_ci_widget_targets` docs to describe post-ID targeting and added a custom-post-type (`book`) mapping example.
+* Enhancement: Clarified `ekesto_ci_widget_selectors` docs to describe post-ID targeting and added a custom-post-type (`book`) mapping example.
 * Fix: Removed legacy relationship-definition compatibility (`meta_key`/`multiple`) from runtime normalization and docs; strategy-based `kind` definitions are now required.
 * New: Added project-level multilingual fanout policy toggles in Global Invalidation settings: `multilingual_fanout_post_triggers_enabled` and `multilingual_fanout_non_post_triggers_enabled`.
 * Enhancement: Unified multilingual fanout execution across post, async, taxonomy, presentation, forms, comments, metadata, timed invalidation, and full-flush emitted URL paths.
@@ -202,8 +242,8 @@ title: Cache Invalidator Changelog
 * Enhancement: Refined plugin readme wording around cache invalidation decision-engine responsibilities and best-effort cache purge behavior.
 
 ### 7.1.0 – 2026-03-13
-* New: Added `ekesto_ci_post_target_mappings` support for non-public trigger post types without scope/group membership (mapped target IDs purge directly).
-* Enhancement: Added a practical, fully commented `ekesto_ci_post_target_mappings` usage example and consolidated filter docs into one canonical section.
+* New: Added `ekesto_ci_post_selectors` support for non-public trigger post types without scope/group membership (mapped target IDs purge directly).
+* Enhancement: Added a practical, fully commented `ekesto_ci_post_selectors` usage example and consolidated filter docs into one canonical section.
 * Fix: Preserved GUI/group-managed behavior for public trigger post types with no matched scope/group (no mapping-only bypass).
 
 ### 7.0.1 – 2026-03-12
@@ -293,7 +333,7 @@ title: Cache Invalidator Changelog
 * New: Synced pattern invalidation with best-effort reference scan and global fallback
 * New: Archive URL invalidation support for post type archives and publicly queryable taxonomy archives
 * New: Adapter URL-purge capability path with emitted URL fallback when direct URL purge is unavailable
-* New: Filter `ekesto_ci_widget_targets` for mapping widget changes to explicit post IDs
+* New: Filter `ekesto_ci_widget_selectors` for mapping widget changes to explicit post IDs
 * New: Filter `ekesto_ci_archive_urls` for archive URL target customization
 * New: Filter `ekesto_ci_presentation_trigger_enabled` for runtime trigger gating
 * New: Filter `ekesto_ci_should_fallback_global` for synced-pattern fallback control
