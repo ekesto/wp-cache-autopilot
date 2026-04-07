@@ -8,6 +8,21 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 3.7.4 – 2026-04-07
+* Enhancement: `TriggerReasonResolver` now resolves adapter-originated purge keys (`purge_single_url`, `purge_front_page`, `purge_pages`) and builder-specific events (`elementor_template_change`) into user-meaningful labels.
+* Enhancement: `save_post` targeted warmups now persist `trigger_class`, `trigger_event`, and `trigger_post_type` metadata so log labels resolve content change reasons without ECI.
+* Enhancement: When ECI merges into an adapter-initiated single run, `Logger::promoteRunTrigger()` promotes the trigger key and metadata so the log row reflects the higher-fidelity source; `primary_trigger_event` locks the first ECI event as permanent label owner.
+* Fix: Merged indicator no longer flags multi-URL ECI invalidation batches that started as a single intake; compares `total_urls` against `incoming_url_count` to distinguish genuine merges from batch starts.
+
+### 3.7.3 – 2026-04-06
+* Enhancement: Warmup log trigger labels now show user-meaningful content change reasons (e.g. "Product update", "Post update") instead of technical WordPress hook names.
+* Enhancement: Invalidation trust now accepts `synchronous_targeted_resolution` as a secondary trust signal so resolver-driven URLs (archives, integration pages) are warmed even when sitemap membership is temporarily unavailable.
+
+### 3.7.2 – 2026-04-05
+* Fix: Recent Logs preview counters now derive shown/total/overflow from one canonical preview candidate set so values stay internally consistent.
+* Enhancement: Settings now warns before browser unload when unsaved changes are present.
+* Enhancement: Invalidation trust now accepts `confirmed_resolution_target` with legacy `resolver_confirmed_target` fallback for mixed-version compatibility.
+
 ### 3.7.1 – 2026-04-02
 * Fix: Added strict queue run-ownership guards so stale workers cannot overwrite or clear newer restarted runs.
 * Fix: Allowed resolver-confirmed invalidation targets to enqueue when cached sitemap membership is temporarily unavailable.
