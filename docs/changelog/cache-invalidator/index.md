@@ -8,6 +8,26 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 9.2.0 – 2026-04-10
+* New: Added per-post-type `expand_post_types` flat target expansion so post-trigger resolution can append singular targets from selected post types in the same pass.
+* Enhancement: Post type expansion now uses deterministic incremental ID batching (`ID > last_id`, `ORDER BY ID ASC`) for large datasets.
+* Fix: Flat post type expansion now hard-skips when any matched enabled host post type uses `target_mode=full_flush`.
+* Enhancement: Added a collapsed `Post Type Expansion` settings panel at the bottom of each Post Type tab, reusing the existing post-type checkbox selector UI.
+* Fix: Expansion debug logs now include per-post-type target counts plus running totals (`post type expansion: {post_type} -> {count} targets (total: {total})`).
+* Fix: Support debug log timestamps now include explicit UTC and WordPress local time (`YYYY-MM-DD HH:MM:SS UTC (YYYY-MM-DD HH:MM:SS local)`) to remove timezone ambiguity during timed invalidation diagnostics.
+* Enhancement: Timed `selected`/`all` invalidation now classifies deterministic targeted emission as `intent=content` with `resolution=CONTENT_DIRECT`.
+* Fix: Timed trust flags are now applied only when final emitted URLs exactly match scheduler-derived deterministic targets; filter-extended URL sets remain untrusted.
+* Enhancement: Timed trust diagnostics now log `trusted` plus `trust_decision_reason` (`deterministic_match` or `extended_by_filter`) for faster support tracing.
+* Enhancement: Renamed widget-template mapping extension hook to `ekesto_ci_widget_template_mappings` for explicit widget trigger context.
+* Fix: Developer reference now documents widget sidebar IDs (`$changedElements`) and classic template mapping use cases with clearer widget-focused guidance.
+* Fix: Canonical precise URL resolution now rejects posts that are not publicly viewable before emission.
+* Fix: Unpublished draft query URLs (for example `?page_id=<id>`) are no longer emitted as warmup targets.
+* Fix: Timed invalidation now preserves `Purge all cache` (`full_flush`) target mode after settings save/reload.
+* Enhancement: Timed target mode normalization is now aligned across sanitize/read/runtime paths (`selected|all|full_flush`).
+* New: Gutenberg `wp_template_part` updates now resolve deterministically through `wp_template` assignments (`_wp_page_template == template post_name`) to publicly viewable posts for precise `GLOBAL_TARGETED` invalidation.
+* Fix: Template-part resolver-targeted emissions now preserve `intent=GLOBAL_TARGETED` and `resolution=GLOBAL_TARGETED`, restoring downstream targeted purge/warmup execution.
+* Fix: Template-part updates with no deterministic assigned publicly viewable targets now fallback to global invalidation with `fallback_reason=unresolved_template_usage`.
+
 ### 9.1.0 – 2026-04-07
 * New: Elementor Component (`elementor_component`) edits via the Atomic editor now trigger structural invalidation through the `elementor/document/after_save` Document lifecycle hook.
 * New: Elementor condition-based targeted resolution for presentation templates (`_elementor_conditions`) with deterministic GLOBAL_TARGETED execution.
