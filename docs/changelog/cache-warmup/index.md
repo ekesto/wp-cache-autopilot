@@ -8,6 +8,11 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 3.7.5 – 2026-04-08
+* Fix: Shared support debug log timestamps now include explicit UTC and WordPress local time (`YYYY-MM-DD HH:MM:SS UTC (YYYY-MM-DD HH:MM:SS local)`) to prevent timezone ambiguity during invalidation-to-warmup tracing.
+* Fix: Adapter single-URL intake now rejects non-public post contexts via a shared post warmability helper.
+* Fix: Targeted canonical URL admission now rejects query-ID targets (`page_id`, `p`, `attachment_id`) when the resolved post is not publicly warmable.
+
 ### 3.7.4 – 2026-04-07
 * Enhancement: `TriggerReasonResolver` now resolves adapter-originated purge keys (`purge_single_url`, `purge_front_page`, `purge_pages`) and builder-specific events (`elementor_template_change`) into user-meaningful labels.
 * Enhancement: `save_post` targeted warmups now persist `trigger_class`, `trigger_event`, and `trigger_post_type` metadata so log labels resolve content change reasons without ECI.
