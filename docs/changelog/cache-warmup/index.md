@@ -8,6 +8,12 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 3.7.6 – 2026-04-11
+* Enhancement: Warmup Transport diagnostics now show a human-readable fallback explanation while keeping the raw fallback code visible for support.
+* Enhancement: Recent Log failed URL rows now include fallback trigger, effective transport, and raw transport attempt context.
+* Enhancement: Log event details now persist additive fallback diagnostics fields (`fallback_used`, `fallback_reason`, `brotli_attempted`, `brotli_error`, `brotli_skip_reason`) and expose them through log detail responses.
+* Fix: Diagnostics label and helper copy now clarify that the fallback trigger is telemetry-wide and not necessarily the latest failed URL cause.
+
 ### 3.7.5 – 2026-04-08
 * Fix: Shared support debug log timestamps now include explicit UTC and WordPress local time (`YYYY-MM-DD HH:MM:SS UTC (YYYY-MM-DD HH:MM:SS local)`) to prevent timezone ambiguity during invalidation-to-warmup tracing.
 * Fix: Adapter single-URL intake now rejects non-public post contexts via a shared post warmability helper.
