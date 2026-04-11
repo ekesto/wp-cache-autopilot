@@ -8,11 +8,20 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 9.2.1 – 2026-04-11
+* New: Timed invalidation rules now support additive `additional_post_types` targets so selected/all page targets can include singular URLs from selected post types.
+* Enhancement: Added shared `PostTypeExpansionResolver` so post-trigger and timed expansion paths use one flat expansion implementation.
+* Enhancement: `Additional Post Type Targets` panels now auto-open on load in both Post Type tabs and Timed rules when saved selected post types still exist.
+* Fix: Timed `selected` rules are now schedulable when `page_ids` is empty but valid `additional_post_types` targets are configured.
+
 ### 9.2.0 – 2026-04-10
 * New: Added per-post-type `expand_post_types` flat target expansion so post-trigger resolution can append singular targets from selected post types in the same pass.
+* New: Timed invalidation rules now support additive `additional_post_types` targets so selected/all page targets can include singular URLs from selected post types.
 * Enhancement: Post type expansion now uses deterministic incremental ID batching (`ID > last_id`, `ORDER BY ID ASC`) for large datasets.
+* Enhancement: Added shared `PostTypeExpansionResolver` so post-trigger and timed expansion paths use one flat expansion implementation.
 * Fix: Flat post type expansion now hard-skips when any matched enabled host post type uses `target_mode=full_flush`.
 * Enhancement: Added a collapsed `Post Type Expansion` settings panel at the bottom of each Post Type tab, reusing the existing post-type checkbox selector UI.
+* Enhancement: `Additional Post Type Targets` panels now auto-open on load in both Post Type tabs and Timed rules when saved selected post types still exist.
 * Fix: Expansion debug logs now include per-post-type target counts plus running totals (`post type expansion: {post_type} -> {count} targets (total: {total})`).
 * Fix: Support debug log timestamps now include explicit UTC and WordPress local time (`YYYY-MM-DD HH:MM:SS UTC (YYYY-MM-DD HH:MM:SS local)`) to remove timezone ambiguity during timed invalidation diagnostics.
 * Enhancement: Timed `selected`/`all` invalidation now classifies deterministic targeted emission as `intent=content` with `resolution=CONTENT_DIRECT`.
@@ -24,6 +33,7 @@ title: Cache Invalidator Changelog
 * Fix: Unpublished draft query URLs (for example `?page_id=<id>`) are no longer emitted as warmup targets.
 * Fix: Timed invalidation now preserves `Purge all cache` (`full_flush`) target mode after settings save/reload.
 * Enhancement: Timed target mode normalization is now aligned across sanitize/read/runtime paths (`selected|all|full_flush`).
+* Fix: Timed `selected` rules are now schedulable when `page_ids` is empty but valid `additional_post_types` targets are configured.
 * New: Gutenberg `wp_template_part` updates now resolve deterministically through `wp_template` assignments (`_wp_page_template == template post_name`) to publicly viewable posts for precise `GLOBAL_TARGETED` invalidation.
 * Fix: Template-part resolver-targeted emissions now preserve `intent=GLOBAL_TARGETED` and `resolution=GLOBAL_TARGETED`, restoring downstream targeted purge/warmup execution.
 * Fix: Template-part updates with no deterministic assigned publicly viewable targets now fallback to global invalidation with `fallback_reason=unresolved_template_usage`.
