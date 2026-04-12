@@ -8,6 +8,17 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.0.0 – 2026-04-12
+* New: Broke legacy/global archive settings and moved archive behavior to explicit per-post-type configuration only.
+* Enhancement: Post Type Tabs management now lists all public post types while runtime remains configured-post-types-only.
+* Enhancement: Added passive unconfigured post type detection with dismissible notices in both wp-admin and ECI settings.
+* Fix: Dismissed unconfigured post type notices now persist per user and reappear only when a genuinely new post type is detected.
+* Fix: Removed timed-rule taxonomy-archive toggle and aligned timed archive behavior to post-type archive configuration.
+* Fix: Configure notice action now only opens the ECI Settings tab and no longer auto-enables post types.
+* Fix: Structural target emissions (synced patterns, Elementor conditions, forms) now correctly set trusted URLs so downstream warmup no longer skips deterministic targets.
+* Fix: `wp_template` edits now use resolver-first structural resolution instead of unconditional full-site flush.
+* Fix: Widget-triggered targeted invalidation now receives trust from the executor safety net instead of hardcoded empty trust.
+
 ### 9.2.1 – 2026-04-11
 * New: Timed invalidation rules now support additive `additional_post_types` targets so selected/all page targets can include singular URLs from selected post types.
 * Enhancement: Added shared `PostTypeExpansionResolver` so post-trigger and timed expansion paths use one flat expansion implementation.
@@ -16,12 +27,9 @@ title: Cache Invalidator Changelog
 
 ### 9.2.0 – 2026-04-10
 * New: Added per-post-type `expand_post_types` flat target expansion so post-trigger resolution can append singular targets from selected post types in the same pass.
-* New: Timed invalidation rules now support additive `additional_post_types` targets so selected/all page targets can include singular URLs from selected post types.
 * Enhancement: Post type expansion now uses deterministic incremental ID batching (`ID > last_id`, `ORDER BY ID ASC`) for large datasets.
-* Enhancement: Added shared `PostTypeExpansionResolver` so post-trigger and timed expansion paths use one flat expansion implementation.
 * Fix: Flat post type expansion now hard-skips when any matched enabled host post type uses `target_mode=full_flush`.
 * Enhancement: Added a collapsed `Post Type Expansion` settings panel at the bottom of each Post Type tab, reusing the existing post-type checkbox selector UI.
-* Enhancement: `Additional Post Type Targets` panels now auto-open on load in both Post Type tabs and Timed rules when saved selected post types still exist.
 * Fix: Expansion debug logs now include per-post-type target counts plus running totals (`post type expansion: {post_type} -> {count} targets (total: {total})`).
 * Fix: Support debug log timestamps now include explicit UTC and WordPress local time (`YYYY-MM-DD HH:MM:SS UTC (YYYY-MM-DD HH:MM:SS local)`) to remove timezone ambiguity during timed invalidation diagnostics.
 * Enhancement: Timed `selected`/`all` invalidation now classifies deterministic targeted emission as `intent=content` with `resolution=CONTENT_DIRECT`.
@@ -33,7 +41,6 @@ title: Cache Invalidator Changelog
 * Fix: Unpublished draft query URLs (for example `?page_id=<id>`) are no longer emitted as warmup targets.
 * Fix: Timed invalidation now preserves `Purge all cache` (`full_flush`) target mode after settings save/reload.
 * Enhancement: Timed target mode normalization is now aligned across sanitize/read/runtime paths (`selected|all|full_flush`).
-* Fix: Timed `selected` rules are now schedulable when `page_ids` is empty but valid `additional_post_types` targets are configured.
 * New: Gutenberg `wp_template_part` updates now resolve deterministically through `wp_template` assignments (`_wp_page_template == template post_name`) to publicly viewable posts for precise `GLOBAL_TARGETED` invalidation.
 * Fix: Template-part resolver-targeted emissions now preserve `intent=GLOBAL_TARGETED` and `resolution=GLOBAL_TARGETED`, restoring downstream targeted purge/warmup execution.
 * Fix: Template-part updates with no deterministic assigned publicly viewable targets now fallback to global invalidation with `fallback_reason=unresolved_template_usage`.
@@ -435,37 +442,37 @@ title: Cache Invalidator Changelog
 ### 1.2.4 – 2026-02-14
 * Fix: Prevent LiteSpeed Cache from caching REST API responses
 
-= 1.2.3 = 14.2.26
+### 1.2.3 – 2026-02-12
 * Fixed: Options weren't saved correctly on production server
 
-= 1.2.2 = 14.2.26
+### 1.2.2 – 2026-02-12
 * Missing build folder added.
 
-= 1.2.1 = 14.2.26
+### 1.2.1 – 2026-02-12
 * UI improvements
 
-= 1.2.0 = 14.2.26
+### 1.2.0 – 2026-02-12
 * New feature: Simple/Advanced group management modes — toggle post type visibility or create custom groups with multiple post types
 * New components: ModeToggle, SimpleModePanel, AdvancedModePanel, GroupEditor, GroupList, CustomSection, ValidationErrors, SettingsTab
 * REST API now supports mode, simple_mode_visibility, and custom_groups parameters
 * Server-side validation for custom groups (unique labels, exclusive post type assignment)
 * UI improvements: reusable panel layout (CustomSection), group key immutability hint and visual deactivation in edit mode
 
-= 1.1.0 = 13.2.26
+### 1.1.0 – 2026-02-07
 * New feature: Settings page goes REACT!
 
-= 1.0.4 = 6.2.26
+### 1.0.4 – 2026-02-04
 * Treat Site Editor template, template part, and global styles updates as full-site invalidations (purges target pages across all enabled groups).
 
-= 1.0.3 = 6.2.26
+### 1.0.3 – 2026-02-03
 * Now only `publish` pages are shown
 * Improved documentation
 
-= 1.0.2 = 6.2.26
+### 1.0.2 – 2026-02-02
 * Github repo added
 
-= 1.0.1 = 5.2.26
+### 1.0.1 – 2026-02-02
 * Improved documentation with real-world customization examples
 
-= 1.0.0 = 5.2.26
+### 1.0.0 – 2026-02-02
 * Initial release with unified cache invalidation and trigger abstraction
