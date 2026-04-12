@@ -8,6 +8,18 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 4.0.0 – 2026-04-12
+* New: Immutable primary identity system — run labels are locked at birth (or on first ECI claim) and stay stable through merges and promotions.
+* New: Extensible `TriggerLabelMap` with `ekesto_ecw_trigger_label_map` filter for custom post-type label resolution.
+* New: Enforced strict invalidation intake contract; `context.urls` is now mandatory and authoritative, with canonical URL-set processing and stable priority-first enqueue ordering.
+* Enhancement: Per-URL trust handling with strict `trusted_source` gating; trusted URLs bypass sitemap checks, non-trusted require cached membership.
+* Enhancement: Adapter single-URL intake now captures trigger metadata from post context for richer log labels.
+* Enhancement: `GLOBAL_INVALIDATION` now passes trigger metadata through to the full warmup path.
+* Enhancement: Full run labels now append "(full)" instead of replacing with a generic label.
+* Enhancement: Early ECI identity claim on active adapter-originated runs before URL enqueue, so labels reflect the authoritative source immediately.
+* Fix: Replaced high-volume per-URL intake skip logs with aggregated counters; per-URL diagnostics are verbose-only.
+* Breaking: Removed legacy trust flag compatibility bridge (`resolver_confirmed_target`, `synchronous_targeted_resolution`); requires ECI >= 9.0.0.
+
 ### 3.7.6 – 2026-04-11
 * Enhancement: Warmup Transport diagnostics now show a human-readable fallback explanation while keeping the raw fallback code visible for support.
 * Enhancement: Recent Log failed URL rows now include fallback trigger, effective transport, and raw transport attempt context.
