@@ -8,6 +8,9 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 4.0.2 – 2026-04-13
+* Fix: Membership attention admin notice now renders a bold plugin prefix (`Cache Warmup:`) for consistent wp-admin warning formatting.
+
 ### 4.0.1 – 2026-04-12
 * Removed deprecated `Queue::enqueueFull()` shim (added in 3.6.0 for 3.x upgrade safety).
 * Fix: Replaced transient-based sitemap membership caching with a persistent option-backed membership index for intake and runner fallbacks.
