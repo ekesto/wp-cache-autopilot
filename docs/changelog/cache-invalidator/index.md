@@ -8,8 +8,10 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
-### 10.0.2 – 2026-04-13
-* Fix: Unconfigured post-type admin notice now renders a bold `Cache Invalidator:` prefix via markup without exposing escaped HTML tags in notice text.
+### 10.1.0 – 2026-04-13
+* Enhancement: Post Type Tabs now default to enabled tabs only and can reveal disabled eligible post types on demand.
+* Fix: Unconfigured post type notice now tracks eligible post types, including non-public types, and matches the new tab model.
+* Fix: Settings UI now keeps configured non-public tabs visible while hiding non-applicable panels and preserving save safety.
 
 ### 10.0.1 – 2026-04-12
 * Fix: Restored all public post types in `Content Relationships` so related trigger types can be selected without enabling additional post type tabs.
