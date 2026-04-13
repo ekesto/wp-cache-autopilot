@@ -8,9 +8,19 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 4.0.1 – 2026-04-12
+* Removed deprecated `Queue::enqueueFull()` shim (added in 3.6.0 for 3.x upgrade safety).
+* Fix: Replaced transient-based sitemap membership caching with a persistent option-backed membership index for intake and runner fallbacks.
+* Enhancement: Added async sitemap membership rebuild orchestration (`ekesto_ecw_rebuild_membership`) with hash skip, lock protection, and structured support-log observability.
+* Fix: Restored membership access for wp-admin AJAX requests so intake can load cached membership state during invalidation handling.
+* Enhancement: Added membership health admin notices for degraded/error/corrupt states with per-user dismissal reset on state changes.
+* Fix: Simplified intake summary logging by removing source-verification suffix; `membership_source_used` is now the authoritative membership state log.
+* Enhancement: Added a persistent oldschool wp-admin warning on all admin screens when no sitemap URL is configured, with direct Warmup settings CTA.
+* Fix: Settings save now updates missing-sitemap warning visibility immediately (no page reload) via a sitemap-presence event bridge.
+
 ### 4.0.0 – 2026-04-12
 * New: Immutable primary identity system — run labels are locked at birth (or on first ECI claim) and stay stable through merges and promotions.
-* New: Extensible `TriggerLabelMap` with `ekesto_ecw_trigger_label_map` filter for custom post-type label resolution.
+* New: Extensible `TriggerLabelMap` with `ekesto_cw_trigger_label_map` filter for custom post-type label resolution.
 * New: Enforced strict invalidation intake contract; `context.urls` is now mandatory and authoritative, with canonical URL-set processing and stable priority-first enqueue ordering.
 * Enhancement: Per-URL trust handling with strict `trusted_source` gating; trusted URLs bypass sitemap checks, non-trusted require cached membership.
 * Enhancement: Adapter single-URL intake now captures trigger metadata from post context for richer log labels.
