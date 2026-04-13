@@ -8,6 +8,9 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.0.2 – 2026-04-13
+* Fix: Unconfigured post-type admin notice now renders a bold `Cache Invalidator:` prefix via markup without exposing escaped HTML tags in notice text.
+
 ### 10.0.1 – 2026-04-12
 * Fix: Restored all public post types in `Content Relationships` so related trigger types can be selected without enabling additional post type tabs.
 * Fix: Kept `Additional Post Type Targets` selectors constrained to configured post types in both Post Type and Timed contexts.
