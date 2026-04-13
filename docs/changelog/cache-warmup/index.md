@@ -8,6 +8,18 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 4.0.4 – 2026-04-13
+* Fix: Sitemap notices now use short, user-facing reason lines and include `Last build` context for membership warnings.
+* Enhancement: Added a consistent troubleshooting CTA (`What this means ↗`) across sitemap notice variants.
+* Fix: Missing sitemap notice now uses a dedicated `Configure` action to open Warmup settings.
+
+### 4.0.3 – 2026-04-13
+* Enhancement: Recent runs now support explicit loading beyond the default 10 entries with cap-aware button labels.
+* Fix: `/logs` now returns list metadata (`logs_total`, `logs_shown`, `logs_overflow`, `logs_truncated`) and `all=1` loads up to 210 newest runs (default 10 + additional 200).
+* Enhancement: Sitemap admin notices now use a consistent 3-line format with bold plugin prefix, short reason line, and docs CTA (`What this means ↗`).
+* Fix: Missing sitemap notice now uses a dedicated `Configure` button and removes SEO-plugin mention text.
+* Fix: Membership sitemap notices now retain `Last build` timestamp context in the short reason line.
+
 ### 4.0.2 – 2026-04-13
 * Fix: Membership attention admin notice now renders a bold plugin prefix (`Cache Warmup:`) for consistent wp-admin warning formatting.
 
