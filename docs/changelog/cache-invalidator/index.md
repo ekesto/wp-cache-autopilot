@@ -8,6 +8,11 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.0.1 – 2026-04-12
+* Fix: Restored all public post types in `Content Relationships` so related trigger types can be selected without enabling additional post type tabs.
+* Fix: Kept `Additional Post Type Targets` selectors constrained to configured post types in both Post Type and Timed contexts.
+* Fix: Removed React-only post-type discovery notice path and now show the classic dismissible wp-admin notice on all admin screens, including ECI settings.
+
 ### 10.0.0 – 2026-04-12
 * New: Broke legacy/global archive settings and moved archive behavior to explicit per-post-type configuration only.
 * Enhancement: Post Type Tabs management now lists all public post types while runtime remains configured-post-types-only.
