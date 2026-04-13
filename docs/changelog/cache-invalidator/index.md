@@ -8,6 +8,10 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.1.1 – 2026-04-13
+* Fix: Release metadata now stays in sync across the plugin header, runtime version, and npm package files.
+* Fix: Retained the Post Type Tabs and unconfigured notice refinements from 10.1.0 while correcting the release version mismatch.
+
 ### 10.1.0 – 2026-04-13
 * Enhancement: Post Type Tabs now default to enabled tabs only and can reveal disabled eligible post types on demand.
 * Fix: Unconfigured post type notice now tracks eligible post types, including non-public types, and matches the new tab model.
