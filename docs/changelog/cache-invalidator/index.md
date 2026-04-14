@@ -8,6 +8,15 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.2.0 – 2026-04-14
+* New: Added per-post-type `tags_enabled` support with an `Include tags (post_tag)` toggle in Additional Invalidation Rules.
+* Fix: Enforced dual-layer `post_tag` gating in taxonomy listeners and archive resolution so tag-driven invalidation and tag archive URLs are excluded when disabled.
+* Enhancement: Documented async queue behavior: tag setting changes affect future events, while already queued taxonomy jobs may still run until drained.
+* Fix: Post Type Tabs and the unconfigured post type notice now exclude internal/structural/admin post types through a settings UI-only exclusion policy, without changing runtime invalidation behavior.
+* Enhancement: Split Post Type Tabs visibility into independent `Show disabled post types` and `Include non-public post types` toggles.
+* Fix: Configured post types now remain visible in Post Type Tabs regardless of both visibility toggles.
+* Fix: Removed legacy `show_non_public_post_types`; settings now use only `include_non_public_post_types` with strict partial REST update persistence.
+
 ### 10.1.1 – 2026-04-13
 * Fix: Release metadata now stays in sync across the plugin header, runtime version, and npm package files.
 * Fix: Retained the Post Type Tabs and unconfigured notice refinements from 10.1.0 while correcting the release version mismatch.
