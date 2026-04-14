@@ -8,6 +8,11 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 4.0.5 – 2026-04-13
+* Fix: Added `TriggerKeyLabelMap` as a dedicated system-event label map so maintenance and upgrade trigger keys resolve to speaking labels without mixing post-type identity domains.
+* Fix: Trigger key normalization now preserves `:` and trims whitespace so broad `upgrade:*` grouping consistently resolves to `System update`.
+* Enhancement: Hardened trigger label lookup with class constants (`EXACT`, `PREFIX`) to avoid per-call map allocation.
+
 ### 4.0.4 – 2026-04-13
 * Fix: Sitemap notices now use short, user-facing reason lines and include `Last build` context for membership warnings.
 * Enhancement: Added a consistent troubleshooting CTA (`What this means ↗`) across sitemap notice variants.
