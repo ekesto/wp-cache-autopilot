@@ -8,6 +8,10 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.2.2 – 2026-04-15
+* Fix: Structural trigger routing now deduplicates before dispatch across WordPress and Elementor entrypoints.
+* Fix: Elementor library and structural entity saves no longer fall back into content invalidation paths.
+
 ### 10.2.1 – 2026-04-15
 * Enhancement: Simplified Post Type Tabs and `Content Relationships` visibility with a shared single-toggle model (`Show non-public post types`).
 * Fix: Removed `show_disabled_post_types` from settings persistence and REST/UI payloads; only `include_non_public_post_types` now controls non-public expansion.
