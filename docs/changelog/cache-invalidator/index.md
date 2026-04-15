@@ -8,6 +8,12 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.2.1 – 2026-04-15
+* Enhancement: Simplified Post Type Tabs and `Content Relationships` visibility with a shared single-toggle model (`Show non-public post types`).
+* Fix: Removed `show_disabled_post_types` from settings persistence and REST/UI payloads; only `include_non_public_post_types` now controls non-public expansion.
+* Fix: Selected non-public post types now remain visible in both Post Type Tabs and `Content Relationships`, even when non-public expansion is off.
+* Fix: Empty-state Post Type Tabs notice now switches to a success notice after the first unsaved enable action and clears after Save.
+
 ### 10.2.0 – 2026-04-14
 * New: Added per-post-type `tags_enabled` support with an `Include tags (post_tag)` toggle in Additional Invalidation Rules.
 * Fix: Enforced dual-layer `post_tag` gating in taxonomy listeners and archive resolution so tag-driven invalidation and tag archive URLs are excluded when disabled.
