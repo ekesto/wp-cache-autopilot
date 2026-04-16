@@ -8,6 +8,16 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.3.1 – 2026-04-16
+* New: Added Cache Enabler and Breeze cache adapters with deterministic URL-level purge support.
+* Enhancement: Adapter registry now prioritizes deterministic URL-purge adapters only (LiteSpeed, WP Rocket, FlyingPress, Cache Enabler, Breeze).
+* Fix: Hardened Cache Enabler static purge calls with callable checks to avoid runtime fatals when APIs are unavailable.
+
+### 10.3.0 – 2026-04-16
+* New: Added zero-config WooCommerce baseline invalidation for published product updates.
+* Enhancement: WooCommerce baseline targets now include the product, Shop page, and core Woo pages through the existing multilingual purge pipeline.
+* Fix: Product saves no longer fall through to single-product warmup when no product post type configuration is enabled.
+
 ### 10.2.2 – 2026-04-15
 * Fix: Structural trigger routing now deduplicates before dispatch across WordPress and Elementor entrypoints.
 * Fix: Elementor library and structural entity saves no longer fall back into content invalidation paths.
