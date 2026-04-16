@@ -8,6 +8,9 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.3.2 – 2026-04-16
+* Fix: Namespaced Cache Enabler static purge calls (`\Cache_Enabler`) to guarantee global class resolution in adapter runtime checks.
+
 ### 10.3.1 – 2026-04-16
 * New: Added Cache Enabler and Breeze cache adapters with deterministic URL-level purge support.
 * Enhancement: Adapter registry now prioritizes deterministic URL-purge adapters only (LiteSpeed, WP Rocket, FlyingPress, Cache Enabler, Breeze).
