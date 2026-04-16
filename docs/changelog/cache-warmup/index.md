@@ -8,6 +8,9 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 4.0.7 – 2026-04-16
+* Fix: Cache Enabler full-cache purge now calls the global `\Cache_Enabler::clear_total_cache()` method explicitly for namespace-safe execution.
+
 ### 4.0.6 – 2026-04-16
 * New: Added Cache Enabler and Breeze adapter support for runtime cache-plugin detection and warmup integration.
 * Enhancement: Adapter selection now prioritizes deterministic adapters only (LiteSpeed, WP Rocket, FlyingPress, Cache Enabler, Breeze).
