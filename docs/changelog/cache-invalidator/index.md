@@ -8,6 +8,15 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.3.3 – 2026-04-17
+* Fix: NON_STRUCTURAL `elementor_library` saves now use neutral global fallback identity (`non_structural_change`) instead of Elementor template fallback attribution.
+* New: Added deterministic option lifecycle invalidation mapping across `updated_option`, `added_option`, and `deleted_option` with core defaults (`blogname`, `blogdescription`, `site_icon`) plus extension overrides via `ekesto_ci_option_change_keys`.
+* Enhancement: Added WPCA internal option registry suppression (`isInternalWpcaOption`) with cross-plugin key coverage and extension filter `ekesto_ci_internal_option_keys`.
+* Fix: Suppressed WordPress runtime option-noise logs/triggers for transients, `cron`, and `settings_errors` paths to keep option-change diagnostics meaningful.
+* Enhancement: Added shared cache-plugin full-clear emission helper (`EmitsFullInvalidationFromCacheClear`) and wired adapter full-clear hooks across LiteSpeed, Breeze, Cache Enabler, FlyingPress, and WP Rocket.
+* Enhancement: Added deterministic cache-plugin URL purge signal emission (`cache_plugin_url_purged`) for WP Rocket and FlyingPress from native URL-batch hooks.
+* Fix: Adapter-initiated purge calls now suppress self-hook re-emission in WP Rocket and FlyingPress to prevent feedback-loop invalidation signals.
+
 ### 10.3.2 – 2026-04-16
 * Fix: Namespaced Cache Enabler static purge calls (`\Cache_Enabler`) to guarantee global class resolution in adapter runtime checks.
 
