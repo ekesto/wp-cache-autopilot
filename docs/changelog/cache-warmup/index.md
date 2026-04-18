@@ -8,6 +8,20 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 4.0.8 – 2026-04-17
+* Fix: Full-run intake now coalesces PREPARING overlaps instead of restarting, preserving atomic prepare ownership and stopping restart churn.
+* Enhancement: Added one-shot coalesced replay flow after full-run finish or prepare failure so trigger bursts collapse deterministically without signal loss.
+* Enhancement: Added lifecycle observability markers for coalesced overwrite/replay and PREPARING completion boundaries in support logs.
+* Fix: WP Rocket adapter now listens to `rocket_after_clean_domain` for full flush and removes `after_rocket_clean_post` intake, keeping URL intake on `after_rocket_clean_files`.
+* Enhancement: Cache Enabler adapter now hooks clear-all events (`cache_enabler_site_cache_cleared`, `cache_enabler_complete_cache_cleared`, `ce_action_cache_cleared`) into full warmup triggers.
+* Fix: System-origin trigger identity is now preserved (`cache_plugin_cleared`) so later merges do not relabel system clear runs as generic content updates.
+* Enhancement: FlyingPress adapter runtime is transport-only in ECW; deterministic warmup intake now relies on ECI emissions instead of direct FlyingPress purge hooks.
+* Enhancement: Replaced the fixed `100` batch ceiling with centralized dynamic batch sizing (UI/system default `1000`, filterable runtime cap via `ekesto_cw_batch_max_urls`, soft clamp `5000`).
+* Enhancement: Advanced settings now receive server-side batch preview (`configured`, `effective`, `dynamic_system_cap`, `basis`) and show configured/effective batch counts without client-side pacing recomputation.
+* Fix: `pages_per_batch` UI control now uses the new schema cap (`1000`) and labels guidance as `Recommended ceiling` when telemetry recommendations hit configured/runtime caps.
+* Fix: Manual full warmup trigger keys now normalize to `manual:settings_general` and `manual:admin_bar`, and both resolve consistently to `Manual warmup` labels.
+* Enhancement: Trigger label lookup now resolves primary system events through `TriggerKeyLabelMap`, including explicit `Cache plugin cleared` mapping for system-triggered runs.
+
 ### 4.0.7 – 2026-04-16
 * Fix: Cache Enabler full-cache purge now calls the global `\Cache_Enabler::clear_total_cache()` method explicitly for namespace-safe execution.
 
