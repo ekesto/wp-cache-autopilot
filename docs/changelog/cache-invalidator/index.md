@@ -8,11 +8,19 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.3.4 – 2026-04-19
+* New: Added tokenized support debug view endpoints (`POST /support-debug/view-token`, `GET /support-debug/view`) for refresh-safe in-browser log viewing.
+* Security: Support debug view tokens are short-lived, user-bound, and HMAC-signed; the view route validates token claims plus logged-in cookie identity and required capability.
+* Fix: Support debug View no longer depends on `_wpnonce` URL auth, eliminating intermittent `rest_cookie_invalid_nonce` failures in wp-admin.
+* Fix: Support debug tokenized view responses now enforce strict no-cache headers and timestamped open URLs to avoid stale cached content on reload.
+* Fix: Trigger registry debug logs (`option_triggers_registered`, `global_triggers_registered`) now emit only for real admin UI requests (excluding cron, REST, AJAX, and favicon noise).
+
 ### 10.3.3 – 2026-04-17
 * Fix: NON_STRUCTURAL `elementor_library` saves now use neutral global fallback identity (`non_structural_change`) instead of Elementor template fallback attribution.
-* New: Added deterministic option lifecycle invalidation mapping across `updated_option`, `added_option`, and `deleted_option` with core defaults (`blogname`, `blogdescription`, `site_icon`) plus extension overrides via `ekesto_ci_option_change_keys`.
-* Enhancement: Added WPCA internal option registry suppression (`isInternalWpcaOption`) with cross-plugin key coverage and extension filter `ekesto_ci_internal_option_keys`.
-* Fix: Suppressed WordPress runtime option-noise logs/triggers for transients, `cron`, and `settings_errors` paths to keep option-change diagnostics meaningful.
+* Breaking: Replaced global option lifecycle listeners with explicit option-trigger registration only (`ekesto_ci_option_triggers`).
+* New: Added selector-driven option execution filter (`ekesto_ci_option_selectors`) with strict explicit behavior (empty selectors are logged and skipped; no implicit global fallback).
+* Breaking: Renamed extension global bypass filter to `ekesto_ci_global_triggers` (direct global invalidation path, no selector resolution).
+* Enhancement: Internal option triggers now run through shared selector normalization/expansion for deterministic targeted-or-global execution.
 * Enhancement: Added shared cache-plugin full-clear emission helper (`EmitsFullInvalidationFromCacheClear`) and wired adapter full-clear hooks across LiteSpeed, Breeze, Cache Enabler, FlyingPress, and WP Rocket.
 * Enhancement: Added deterministic cache-plugin URL purge signal emission (`cache_plugin_url_purged`) for WP Rocket and FlyingPress from native URL-batch hooks.
 * Fix: Adapter-initiated purge calls now suppress self-hook re-emission in WP Rocket and FlyingPress to prevent feedback-loop invalidation signals.
