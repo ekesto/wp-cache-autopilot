@@ -8,12 +8,23 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 10.3.5 – 2026-04-20
+* Enhancement: Manual single-target cache clear detection is now stricter and only accepts validated one-page targets.
+* Fix: Targeted signal dedupe now includes the source hook, preventing accidental same-request suppression across different purge paths.
+* Fix: Unsupported Breeze runtime URL hooks were removed from signal ingestion to avoid false targeted invalidation.
+* Enhancement: Breeze now supports intent-based single-page invalidation from the admin “Clear cache” action with nonce and permission validation.
+
 ### 10.3.4 – 2026-04-19
 * New: Added tokenized support debug view endpoints (`POST /support-debug/view-token`, `GET /support-debug/view`) for refresh-safe in-browser log viewing.
 * Security: Support debug view tokens are short-lived, user-bound, and HMAC-signed; the view route validates token claims plus logged-in cookie identity and required capability.
 * Fix: Support debug View no longer depends on `_wpnonce` URL auth, eliminating intermittent `rest_cookie_invalid_nonce` failures in wp-admin.
 * Fix: Support debug tokenized view responses now enforce strict no-cache headers and timestamped open URLs to avoid stale cached content on reload.
 * Fix: Trigger registry debug logs (`option_triggers_registered`, `global_triggers_registered`) now emit only for real admin UI requests (excluding cron, REST, AJAX, and favicon noise).
+* Enhancement: `EmissionHelper` is now the single emission boundary for `ekesto_ci_invalidation_urls`; all emissions are canonicalized and always include `context.urls`.
+* Fix: Canonical emission rules now enforce `GLOBAL_INVALIDATION` payloads with `urls=[]` and explicit skip logs for empty targeted payloads (`eci_emission_skipped_empty_targeted`).
+* Enhancement: Added centralized adapter signal recursion/dedupe protection (`AdapterSignalGuard`) with request-local ingestion/suppression logging.
+* New: Added `SystemInvalidationListener` for lifecycle/system ownership (`upgrader_process_complete`, plugin activate/deactivate, manual full refresh), with plugin lifecycle unified under `global_invalidation.plugin_update`.
+* Enhancement: Adapter operational authority is now centralized in `AdapterManager::hasOperationalAdapter()` with fail-closed filter bridge `ekesto_ci_has_operational_adapter`.
 
 ### 10.3.3 – 2026-04-17
 * Fix: NON_STRUCTURAL `elementor_library` saves now use neutral global fallback identity (`non_structural_change`) instead of Elementor template fallback attribution.
