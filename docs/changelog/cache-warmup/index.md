@@ -8,6 +8,11 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 4.1.0 – 2026-04-20
+* Enhancement: Cache Warmup now consumes only the Cache Invalidator emission pipeline as its trigger source.
+* Fix: Removed legacy purge and lifecycle trigger paths to keep warmup execution deterministic and avoid duplicate run paths.
+* Enhancement: Simplified cache integration boundaries by removing the internal adapter layer and relying on Cache Invalidator adapter authority.
+
 ### 4.0.8 – 2026-04-17
 * Fix: Full-run intake now coalesces PREPARING overlaps instead of restarting, preserving atomic prepare ownership and stopping restart churn.
 * Enhancement: Added one-shot coalesced replay flow after full-run finish or prepare failure so trigger bursts collapse deterministically without signal loss.
@@ -21,6 +26,11 @@ title: Cache Warmup Changelog
 * Fix: `pages_per_batch` UI control now uses the new schema cap (`1000`) and labels guidance as `Recommended ceiling` when telemetry recommendations hit configured/runtime caps.
 * Fix: Manual full warmup trigger keys now normalize to `manual:settings_general` and `manual:admin_bar`, and both resolve consistently to `Manual warmup` labels.
 * Enhancement: Trigger label lookup now resolves primary system events through `TriggerKeyLabelMap`, including explicit `Cache plugin cleared` mapping for system-triggered runs.
+* Enhancement: Runtime trigger ownership is now deterministic: ECW intake registers only `ekesto_ci_invalidation_urls` (plus internal housekeeping) and no longer owns lifecycle or adapter-signal ingress.
+* Fix: Added fail-closed operational adapter authority bridge (`InvalidatorAdapterGate`) with canonical context and optional override via `ekesto_ci_has_operational_adapter`.
+* Fix: Manual full refresh no longer queues directly; it now dispatches `ekesto_ci_manual_full_refresh` and flows through ECI global emission intake.
+* Fix: Intake contract is now strict: missing `context.urls` payloads are rejected, while `GLOBAL_INVALIDATION` with `context.urls=[]` is accepted as canonical full warmup intent.
+* Enhancement: Correlation IDs now propagate from ECI emissions through ECW intake and queue metadata for end-to-end trigger tracing.
 
 ### 4.0.7 – 2026-04-16
 * Fix: Cache Enabler full-cache purge now calls the global `\Cache_Enabler::clear_total_cache()` method explicitly for namespace-safe execution.
