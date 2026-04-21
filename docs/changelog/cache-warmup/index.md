@@ -8,6 +8,15 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 5.0.0 – 2026-04-21
+* Breaking: Access control is now binary; users can either manage Cache Warmup fully or not access it.
+* Fix: Admin bar actions and settings visibility now require manage access only.
+* Enhancement: Cache Warmup now uses the shared manage-only access shim with Cache Invalidator-compatible behavior.
+
+### 4.1.1 – 2026-04-20
+* Fix: Settings JavaScript and styles now always include a version hash to prevent stale browser cache after updates.
+* Enhancement: Settings assets now use per-file version metadata with deterministic fallback for cache busting reliability.
+
 ### 4.1.0 – 2026-04-20
 * Enhancement: Cache Warmup now consumes only the Cache Invalidator emission pipeline as its trigger source.
 * Fix: Removed legacy purge and lifecycle trigger paths to keep warmup execution deterministic and avoid duplicate run paths.
