@@ -8,6 +8,10 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 11.0.1 – 2026-04-21
+* Fix: Support debug log view works again in a new browser tab without breaking token-based security checks.
+* Enhancement: Access control settings now stay visible for all users with manage permission, not only administrators.
+
 ### 11.0.0 – 2026-04-21
 * Breaking: Access control is now binary; users can either have full manage access or no access.
 * Enhancement: Roles now use a simplified None/Manage model and user overrides are managed as an explicit selected-users list.
