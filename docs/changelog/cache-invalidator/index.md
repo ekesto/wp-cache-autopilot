@@ -8,6 +8,15 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 11.0.0 – 2026-04-21
+* Breaking: Access control is now binary; users can either have full manage access or no access.
+* Enhancement: Roles now use a simplified None/Manage model and user overrides are managed as an explicit selected-users list.
+* Fix: Settings and access control now save through one flow with a unified dirty-state signal.
+
+### 10.3.6 – 2026-04-20
+* Fix: Settings JavaScript and styles now always include a version hash to prevent stale browser cache after plugin updates.
+* Enhancement: Asset version resolution is now hardened with per-file metadata and deterministic fallback behavior.
+
 ### 10.3.5 – 2026-04-20
 * Enhancement: Manual single-target cache clear detection is now stricter and only accepts validated one-page targets.
 * Fix: Targeted signal dedupe now includes the source hook, preventing accidental same-request suppression across different purge paths.
