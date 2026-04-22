@@ -8,6 +8,10 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 11.0.3 – 2026-04-22
+* Fix: Elementor presentation template condition changes now invalidate both previous and current page targets in one deterministic pass.
+* Enhancement: Elementor condition-change diagnostics now focus on final-state transition and effective target signals with reduced debug noise.
+
 ### 11.0.2 – 2026-04-21
 * Fix: Support debug log view works again in a new browser tab without breaking token-based security checks.
 * Fix: Administrators now always see Access Control settings again.
