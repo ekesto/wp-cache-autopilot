@@ -8,6 +8,10 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 11.0.4 – 2026-04-23
+* Enhancement: Async invalidation now uses one global switch with reliable sync fallback, so cache updates are always reflected.
+* Fix: Elementor template saves now keep their previous condition state persistently, so invalidation remains reliable even after long idle periods.
+
 ### 11.0.3 – 2026-04-22
 * Fix: Elementor presentation template condition changes now invalidate both previous and current page targets in one deterministic pass.
 * Enhancement: Elementor condition-change diagnostics now focus on final-state transition and effective target signals with reduced debug noise.
