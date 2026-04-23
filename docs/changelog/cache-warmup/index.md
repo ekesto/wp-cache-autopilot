@@ -8,6 +8,11 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 5.0.1 – 2026-04-23
+* Enhancement: Added explicit run-total transition logging (`ecw_run_total_updated`) whenever active runs merge additional URLs.
+* Fix: Queue diagnostics now show total URL growth clearly after single-run initialization.
+* Fix: `Run Next Warmup Batch` now refreshes Recent runs immediately after completion, including when a previous log fetch is still in progress.
+
 ### 5.0.0 – 2026-04-21
 * Breaking: Access control is now binary; users can either manage Cache Warmup fully or not access it.
 * Fix: Admin bar actions and settings visibility now require manage access only.
