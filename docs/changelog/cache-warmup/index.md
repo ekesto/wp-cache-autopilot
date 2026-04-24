@@ -8,6 +8,10 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 5.0.2 – 2026-04-24
+* Fix: Queue-aware run button.
+* Fix: Active-only log refresh.
+
 ### 5.0.1 – 2026-04-23
 * Enhancement: Added explicit run-total transition logging (`ecw_run_total_updated`) whenever active runs merge additional URLs.
 * Fix: Queue diagnostics now show total URL growth clearly after single-run initialization.
