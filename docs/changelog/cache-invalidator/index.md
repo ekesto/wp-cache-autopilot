@@ -8,6 +8,12 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 11.0.6 – 2026-04-24
+* Fix: Pick up non-Elementor editor saves.
+
+### 11.0.5 – 2026-04-24
+* Fix: Restore venue host resolution.
+
 ### 11.0.4 – 2026-04-23
 * Enhancement: Async invalidation now uses one global switch with reliable sync fallback, so cache updates are always reflected.
 * Fix: Elementor template saves now keep their previous condition state persistently, so invalidation remains reliable even after long idle periods.
