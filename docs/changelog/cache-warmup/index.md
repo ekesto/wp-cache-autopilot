@@ -8,6 +8,9 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 5.0.6 – 2026-04-28
+* Fix: The manual "Run Next Warmup Batch" button is now available while a full warmup is preparing, so warmup can be triggered manually when WP-Cron is delayed or disabled.
+
 ### 5.0.5 – 2026-04-28
 * Fix: Deleted posts are removed from pending warmup work before they can trigger repeated 404s.
 * Fix: Trashed posts now use their original permalink for deleted URL filtering, avoiding homepage suppression.
