@@ -8,6 +8,17 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 5.0.4 – 2026-04-27
+* Fix: Sitemap membership now refreshes automatically after content, taxonomy, option, and post type structure changes.
+* Fix: Internal plugin option updates no longer trigger unnecessary sitemap rebuild scheduling.
+* Fix: Recent runs now refresh automatically when returning to a hidden Log tab.
+* Enhancement: Sitemap rebuild scheduling logs now show the trigger source only when a rebuild is actually queued.
+
+### 5.0.3 – 2026-04-27
+* Fix: Manual full refresh now starts warming sooner after queue preparation begins.
+* Fix: Recent runs now refresh to the final result automatically after a warmup completes.
+* Enhancement: Added a visible completion log for finished runs without enabling verbose logging.
+
 ### 5.0.2 – 2026-04-24
 * Fix: Queue-aware run button.
 * Fix: Active-only log refresh.
