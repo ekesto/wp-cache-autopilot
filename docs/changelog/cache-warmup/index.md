@@ -8,6 +8,12 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 5.0.5 – 2026-04-28
+* Fix: Deleted posts are removed from pending warmup work before they can trigger repeated 404s.
+* Fix: Trashed posts now use their original permalink for deleted URL filtering, avoiding homepage suppression.
+* Fix: Warmup logs now label deleted content as deleted instead of post updates.
+* Enhancement: Added focused diagnostics for deleted-post warmup flow.
+
 ### 5.0.4 – 2026-04-27
 * Fix: Sitemap membership now refreshes automatically after content, taxonomy, option, and post type structure changes.
 * Fix: Internal plugin option updates no longer trigger unnecessary sitemap rebuild scheduling.
