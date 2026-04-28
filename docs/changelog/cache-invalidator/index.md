@@ -8,6 +8,11 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 11.0.7 – 2026-04-27
+* Fix: WooCommerce variation changes now refresh the parent product page.
+* Fix: Deterministic relationship targets now keep trusted URL status in sync emissions, so valid grouped-parent targets are no longer dropped downstream.
+* Fix: Relationship trust scope remains strict to internally resolved post IDs mapped to permalinks; archive and extension-added URLs stay untrusted.
+
 ### 11.0.6 – 2026-04-24
 * Fix: Pick up non-Elementor editor saves.
 
