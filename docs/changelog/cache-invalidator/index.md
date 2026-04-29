@@ -8,10 +8,12 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
-### 11.0.8 – 2026-04-28
-* Fix: Direct page updates now refresh reliably when sitemap membership is temporarily unavailable.
-* Fix: Moving published content to Trash now triggers deletion invalidation.
-* Enhancement: Added focused diagnostics for deleted-post invalidation flow.
+### 11.1.0 – 2026-04-29
+* New: Timed invalidation now includes a “Use post type settings” mode for replaying configured host targets.
+* Enhancement: Timed rules can now include post type archives and public taxonomy archives from selected host settings.
+* Enhancement: Timed invalidation now logs clearer target counts for configured host replay runs.
+* Fix: Uninstall now removes the plugin's remaining settings and temporary cache data for a cleaner database.
+* Fix: Uninstall now also removes support debug log files created by the plugin.
 
 ### 11.0.7 – 2026-04-27
 * Fix: WooCommerce variation changes now refresh the parent product page.
