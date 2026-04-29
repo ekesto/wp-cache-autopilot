@@ -1,6 +1,6 @@
 # WP Cache Autopilot
 
-WP Cache Autopilot is a cache lifecycle automation system for WordPress. It improves cache freshness by automatically determining which pages are affected by content changes, purging only those entries through supported cache plugins, and rebuilding them through controlled warmup execution.
+WP Cache Autopilot is a WordPress cache invalidation and warmup plugin bundle that keeps cached pages fresh after content changes — automatically. Instead of flushing everything on every save, it determines exactly which pages are affected, purges only those entries through your active cache plugin, and rebuilds them through controlled warmup execution.
 
 This repository contains the public changelogs for the included plugins:
 
@@ -9,60 +9,59 @@ This repository contains the public changelogs for the included plugins:
 
 Documentation lives on the product website. This repository exists only for release transparency and changelog history.
 
-## Scope
+Visit the website:
+[https://wpcacheautopilot.com](https://wpcacheautopilot.com)
 
-WP Cache Autopilot does not replace cache plugins. Cache plugins handle storage and delivery. WP Cache Autopilot handles cache freshness automation.
+## How it works
+
+WP Cache Autopilot does not replace cache plugins. Cache plugins handle storage and delivery. WP Cache Autopilot handles cache freshness — the part most cache plugins leave to a full flush.
 
 Lifecycle handled:
 
-1 Detect content changes  
-2 Resolve affected URLs  
-3 Purge via cache adapter  
-4 Queue warmup requests  
-5 Rebuild cache via paced execution  
+1. Detect content changes
+2. Resolve affected URLs
+3. Purge via cache adapter
+4. Queue warmup requests
+5. Rebuild cache via paced execution
 
 ## Included plugins
 
 ### Cache Invalidator
 
-Determines which URLs must be refreshed after content changes.
+Automatically purges the right WordPress cache entries after content changes — without clearing the entire cache.
 
 Core capabilities:
 
-- Group-based invalidation rules
-- Relationship propagation
-- Archive inclusion
-- Multilingual awareness
-- Timed invalidation rules
-- Global invalidation controls
-- Developer hooks and filters
+- Post type–based invalidation rules
+- Related post and cross-content invalidation
+- Archive URL inclusion
+- Multilingual support
+- Timed invalidation rules for time-sensitive content
+- Scheduled post support — cache refreshes at publish time
+- Global invalidation controls for theme and template changes
+- Developer hooks and filters for custom integrations
 
 ### Cache Warmup
 
-Rebuilds cache entries after invalidation.
+Rebuilds cached pages after invalidation so visitors don't hit cold pages.
 
 Core capabilities:
 
-- Targeted warmup after invalidation
-- Full sitemap warmup
-- Queue execution via WP-Cron
-- Priority handling for important URLs
-- Diagnostics and transport fallback logic
+- Targeted cache warming for purged URLs
+- Full site cache preloading from sitemaps
+- Auto-paced queue execution via WP-Cron
+- Priority ordering for high-value pages
+- Diagnostics and run history
 
 ## Integrations
 
-WP Cache Autopilot integrates with supported WordPress cache plugins through cache adapters. Behavior depends on adapter capabilities and hosting environment.
+WP Cache Autopilot integrates with widely used WordPress cache plugins. Behavior depends on adapter capabilities and hosting environment.
 
-## Changelogs
+See [Supported Integrations](https://wpcacheautopilot.com/docs/supported-integrations/) for the full compatibility list.
 
-This repository publishes changelogs for:
+## Who it's for
 
-- Cache Invalidator
-- Cache Warmup
-
-For installation and configuration documentation:
-
-https://wpcacheautopilot.com/docs
+WP Cache Autopilot is built for WordPress developers, agencies managing multiple client sites, and technical site owners who need reliable, predictable cache behavior in production — without manual cache management.
 
 ## Links
 
@@ -80,4 +79,4 @@ Support:
 
 ## Maintainer
 
-Developed and maintained by Beat Schenkel (ekesto), an independent Swiss WordPress developer.
+Developed and maintained by Beat Schenkel (ekesto), an independent WordPress developer.
