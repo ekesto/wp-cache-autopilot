@@ -8,6 +8,11 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 5.0.7 – 2026-04-29
+* Fix: Uninstall now removes Cache Warmup settings, queue state, sitemap membership data, and tuning data for a cleaner database.
+* Fix: Uninstall now removes the dedicated warmup run log table and transient cleanup state.
+* Fix: The `Run Next Warmup Batch` button now returns a fast valid response on slow hosts while still starting warmup immediately when WP-Cron is available.
+
 ### 5.0.6 – 2026-04-28
 * Fix: The manual "Run Next Warmup Batch" button is now available while a full warmup is preparing, so warmup can be triggered manually when WP-Cron is delayed or disabled.
 
