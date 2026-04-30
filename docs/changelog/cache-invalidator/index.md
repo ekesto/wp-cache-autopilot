@@ -8,6 +8,9 @@ title: Cache Invalidator Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 11.1.1 – 2026-04-30
+* Fix: Bare `single` site-editor template no longer targets pages; pages resolve through `page`/`singular` per WordPress hierarchy. Use the `ekesto_ci_single_template_post_types` filter to opt back in.
+
 ### 11.1.0 – 2026-04-29
 * New: Timed invalidation now includes a “Use post type settings” mode for replaying configured host targets.
 * Enhancement: Timed rules can now include post type archives and public taxonomy archives from selected host settings.
