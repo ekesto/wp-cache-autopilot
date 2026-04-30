@@ -8,6 +8,10 @@ title: Cache Warmup Changelog
 > Auto-generated from the plugin readme. Source of truth lives in the plugin repository.
 
 
+### 5.0.8 – 2026-04-30
+* Fix: Warmup log rows now show `Skipped` with a readable sitemap-membership hint instead of internal skip codes.
+* Fix: Async template changes now show `Template update` in warmup logs instead of a generic related-content label.
+
 ### 5.0.7 – 2026-04-29
 * Fix: Uninstall now removes Cache Warmup settings, queue state, sitemap membership data, and tuning data for a cleaner database.
 * Fix: Uninstall now removes the dedicated warmup run log table and transient cleanup state.
